@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function SearchBar({ onSearch }) {
+function SearchBar({ onSearch, onClose }) {
   const [id, setId] = useState("");
 
   const handleChange = (event) => {

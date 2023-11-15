@@ -1,22 +1,27 @@
-/* Card.css */
 .Card {
-  height: 15rem;
-  width: 10rem;
-  background-color: #131313;
+  position: relative;
+  height: 19rem;
+  width: 11rem;
+  background-color: #353535;
   font-size: 0.53rem;
   margin: 2rem;
+  border-radius: 20px 0px 20px 0px;
 }
-
 .Card h2 {
   margin: 0.1rem;
 }
 
-.Card button {
+.btn {
+  height: 10px;
+  width: 10px;
   background-color: #f00;
   color: #fff;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   border: none;
-  padding: 8px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .Card img {

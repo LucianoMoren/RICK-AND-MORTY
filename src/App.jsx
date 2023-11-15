@@ -4,33 +4,46 @@ import Cards from "./components/Cards.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import Nav from "./components/Nav.jsx";
 import { useState } from "react";
+import axios from "axios";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  // onSearch={(characterID) => window.alert(characterID)}
 
-  const example = {
-    id: 1,
-    name: "Rick Sanchez",
-    status: "Alive",
-    species: "Human",
-    gender: "Male",
-    origin: {
-      name: "Earth (C-137)",
-      url: "https://rickandmortyapi.com/api/location/1",
-    },
-    image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-  };
+  function onSearch(id) {
+    const apiUrl = `https://rickandmortyapi.com/api/character/${id}`;
 
-  const onSearch = () => {
-    setCharacters([...characters, example]);
-  };
+    axios(apiUrl)
+      .then(({ data }) => {
+        if (data.name) {
+          // Verifica si el personaje ya está en el array antes de agregarlo
+          if (!characters.some((character) => character.id === data.id)) {
+            setCharacters((oldChars) => [...oldChars, data]);
+          } else {
+            window.alert("¡Este personaje ya está en la lista!");
+          }
+        } else {
+          window.alert("¡No hay personajes con este ID!");
+        }
+      })
+      .catch((error) => {
+        console.error("Error al realizar la solicitud a la API:", error);
+        window.alert("¡Hubo un error al buscar el personaje!");
+      });
+  }
+
+  function onClose(id) {
+    const parsedId = parseInt(id, 10);
+
+    setCharacters((character) =>
+      character.filter((character) => character.id !== parsedId)
+    );
+  }
 
   return (
     <div className="App">
       <Nav />
-      <SearchBar onSearch={onSearch} />
-      <Cards characters={characters} />
+      <SearchBar onSearch={onSearch} onClose={onClose} />
+      <Cards characters={characters} onClose={onClose} />
     </div>
   );
 }
