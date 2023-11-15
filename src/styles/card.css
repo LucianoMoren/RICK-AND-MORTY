@@ -1,0 +1,24 @@
+/* Card.css */
+.Card {
+  height: 15rem;
+  width: 10rem;
+  background-color: #131313;
+  font-size: 0.53rem;
+  margin: 2rem;
+}
+
+.Card h2 {
+  margin: 0.1rem;
+}
+
+.Card button {
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.Card img {
+  height: 120px;
+}

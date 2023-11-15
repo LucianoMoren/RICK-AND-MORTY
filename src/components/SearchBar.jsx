@@ -1,8 +1,19 @@
-export default function SearchBar(props) {
-    return (
-        <div>
-            <input type='search'/>
-            <button onClick={() => props.onSearch('ID: 1')}>Agregar</button>
-        </div>
-        );
+import React from "react";
+import { useState } from "react";
+
+function SearchBar({ onSearch }) {
+  const [id, setId] = useState("");
+
+  const handleChange = (event) => {
+    setId(event.target.value);
+  };
+
+  return (
+    <div>
+      <input type="search" value={id} onChange={handleChange} />
+      <button onClick={() => onSearch(id)}>Agregar</button>
+    </div>
+  );
 }
+
+export default SearchBar;
