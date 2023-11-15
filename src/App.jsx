@@ -1,51 +1,52 @@
-import "./App.css";
-// import Card from './components/Card.jsx';
-import Cards from "./components/Cards.jsx";
-import SearchBar from "./components/SearchBar.jsx";
-import Nav from "./components/Nav.jsx";
-import { useState } from "react";
+import { useState } from 'react';
+import './App.css';
+import Cards from './components/cards/Cards.jsx';
+import Nav from './components/nav/Nav.jsx';
 import axios from "axios";
+//* https://rym2.up.railway.app/api/character/10?key=pi-hx-aromero
+//* https://rym2.up.railway.app/api/character/10?key=henrystaff
+const URL = "https://rym2.up.railway.app/api/character";
+const API_KEY = "henrystaff";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
+   
+   const [characters, setCharacters] = useState([]);
 
-  function onSearch(id) {
-    const apiUrl = `https://rickandmortyapi.com/api/character/${id}`;
+   function onSearch(id) {
+      const characterId = characters.filter(
+         char => char.id === Number(id)
+      )
+      if(characterId.length) {
+         return alert(`${characterId[0].name} ya existe!`)
+      }
+      axios(`${URL}/${id}?key=${API_KEY}`)
+         .then(
+            ({ data }) => {
+               if (data.name) {
+                  // console.log(data)
+                  setCharacters([...characters, data]);
+               } else {
+                  window.alert('¡El id debe ser un número entre 1 y 826!');
+               }
+            });
+   }
 
-    axios(apiUrl)
-      .then(({ data }) => {
-        if (data.name) {
-          // Verifica si el personaje ya está en el array antes de agregarlo
-          if (!characters.some((character) => character.id === data.id)) {
-            setCharacters((oldChars) => [...oldChars, data]);
-          } else {
-            window.alert("¡Este personaje ya está en la lista!");
-          }
-        } else {
-          window.alert("¡No hay personajes con este ID!");
-        }
-      })
-      .catch((error) => {
-        console.error("Error al realizar la solicitud a la API:", error);
-        window.alert("¡Hubo un error al buscar el personaje!");
-      });
-  }
+   //* characters [ {id:1, name:"Rick"}, {id:2, name:"Morty"} ]
+   //* id: "2" => character.id === id
+   //* [ {id: 1, name:"Rick"} ]
 
-  function onClose(id) {
-    const parsedId = parseInt(id, 10);
+   const onClose = id => {
+      setCharacters(characters.filter(char => char.id !== Number(id)))
+   }
 
-    setCharacters((character) =>
-      character.filter((character) => character.id !== parsedId)
-    );
-  }
-
-  return (
-    <div className="App">
-      <Nav />
-      <SearchBar onSearch={onSearch} onClose={onClose} />
-      <Cards characters={characters} onClose={onClose} />
-    </div>
-  );
+   return (
+      <div className='App'>
+         <Nav onSearch={onSearch} />
+         <hr />
+         <Cards characters={characters} onClose={onClose} />
+      </div>
+   );
 }
 
 export default App;
+
