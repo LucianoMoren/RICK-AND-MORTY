@@ -27,6 +27,12 @@ export default function SearchBar(props) {
       <button onClick={handleClick} className="search-button">
         Agregar
       </button>
+      <button
+        className="showButton"
+        onClick={() => props.onSearch(Math.ceil(Math.random() * 826))}
+      >
+        Add random
+      </button>
     </div>
   );
 }

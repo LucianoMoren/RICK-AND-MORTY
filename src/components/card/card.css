@@ -1,0 +1,63 @@
+#root {
+  background: rgb(29, 29, 29);
+}
+
+.card {
+  height: 300px;
+  width: 290px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 16px;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Image */
+.card-image {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: #0a3394;
+  background: linear-gradient(to top, #0a3394, #4286f4);
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* Agrega más estilos según sea necesario */
+}
+
+/* Description */
+.card-description {
+  display: flex;
+  position: absolute;
+  gap: 0.5em;
+  flex-direction: column;
+  background-color: #0c0c0cdc;
+  color: #d4d4d4;
+  height: 70%;
+  width: 100%;
+  bottom: -70%;
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 0.5rem;
+}
+
+/* Text */
+.text-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.text-body {
+  font-size: 1rem;
+  line-height: 130%;
+}
+
+/* Hover states */
+.card:hover .card-description {
+  bottom: 0; /* Muestra el elemento moviéndolo hacia arriba */
+}
