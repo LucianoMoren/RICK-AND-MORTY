@@ -1,0 +1,9 @@
+.nav-bar {
+  height: 4rem;
+  width: 100%;
+  background: rgb(219, 219, 219);
+}
+
+.home-btn {
+  width: 100px;
+}
