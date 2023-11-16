@@ -3,15 +3,18 @@ import "./App.css";
 import Cards from "./components/cards/Cards.jsx";
 import Nav from "./components/nav/Nav.jsx";
 import axios from "axios";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import About from "./components/about/About.jsx";
 import Detail from "./components/detail/detail.jsx";
+import NotFound from "./components/notfound/NotFound.jsx";
 
 const URL = "https://rym2.up.railway.app/api/character";
 const API_KEY = "henrystaff";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+
+  const navigate = useNavigate();
 
   function onSearch(id) {
     const characterId = characters.filter((char) => char.id === Number(id));
@@ -26,6 +29,8 @@ function App() {
         window.alert("¡El id debe ser un número entre 1 y 826!");
       }
     });
+
+    navigate("/home");
   }
 
   const onClose = (id) => {
@@ -42,6 +47,7 @@ function App() {
         ></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/detail/:id" element={<Detail />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>
   );
