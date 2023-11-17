@@ -1,18 +1,27 @@
-.search {
-  background-color: none;
-}
-
-.search-bar {
-  width: 15rem;
-  height: 1.5rem;
-  border: none;
-  border-radius: 0.2rem;
-}
-
 .search-button {
-  width: 1.5rem;
-  height: 1.5rem;
-  border: none;
-  border-radius: 0.2rem;
-  font-size: 1rem;
+  height: 30px;
+  padding: 5px 10px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  background: #d3dfe6;
+  position: relative;
+  font-size: 12px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  overflow: hidden;
+}
+
+.random-button {
+  height: 30px;
+  padding: 5px 10px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  background: #d3dfe6;
+  position: relative;
+  font-size: 12px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  overflow: hidden;
 }

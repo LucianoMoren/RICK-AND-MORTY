@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import Cards from "./components/cards/Cards.jsx";
 import Nav from "./components/nav/Nav.jsx";
-import axios from "axios";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import About from "./components/about/About.jsx";
 import Detail from "./components/detail/detail.jsx";
 import NotFound from "./components/notfound/NotFound.jsx";
@@ -11,64 +11,73 @@ import Form from "./components/form/Form.jsx";
 
 const URL = "https://rym2.up.railway.app/api/character";
 const API_KEY = "henrystaff";
+const EMAIL = "123@gmail.com";
+const PASSWORD = "asd1234";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [access, setAccess] = useState(false);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  function onSearch(id) {
-    const characterId = characters.filter((char) => char.id === Number(id));
-    if (characterId.length) {
-      return alert(`${characterId[0].name} ya existe!`);
+  useEffect(() => {
+    //!Acceso automatico
+    // !access && navigate("/home");
+    !access && navigate("/");
+  }, [access]);
+
+  const onSearch = async (id) => {
+    const characterId = characters.find((char) => char.id === Number(id));
+
+    if (characterId) {
+      alert(`${characterId.name} ya existe!`);
+      return;
     }
-    axios(`${URL}/${id}?key=${API_KEY}`).then(({ data }) => {
+
+    try {
+      const { data } = await axios(`${URL}/${id}?key=${API_KEY}`);
+
       if (data.name) {
         setCharacters([...characters, data]);
+        navigate("/home");
       } else {
         window.alert("¡El id debe ser un número entre 1 y 826!");
       }
-    });
-
-    navigate("/home");
-  }
+    } catch (error) {
+      console.error("Error fetching character:", error);
+    }
+  };
 
   const onClose = (id) => {
     setCharacters(characters.filter((char) => char.id !== Number(id)));
   };
 
-  const { pathname } = useLocation();
-
-  const [access, setaccess] = useState(false);
-
-  const email = "123@gmail.com";
-  const password = "asd1234";
-
-  // //!NUEVOD
-  function login(userData) {
-    if (email === userData.email && password === userData.password) {
-      setaccess(true);
+  const login = (userData) => {
+    if (EMAIL === userData.email && PASSWORD === userData.password) {
+      setAccess(true);
       navigate("/home");
+    } else {
+      alert("Tus datos no son correctos");
     }
-  }
+  };
 
-  useEffect(() => {
-    !access && navigate("/");
-  }, [access]);
+  const logout = () => {
+    setAccess(false);
+  };
 
   return (
-    <div className="App">
-      {pathname !== "/" && <Nav onSearch={onSearch} />}
+    <div className="min-h-screen">
+      {pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />}
 
       <Routes>
         <Route path="/" element={<Form login={login} />} />
-
         <Route
           path="/home"
           element={<Cards characters={characters} onClose={onClose} />}
-        ></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/detail/:id" element={<Detail />}></Route>
-        <Route path="*" element={<NotFound />}></Route>
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

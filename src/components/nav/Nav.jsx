@@ -6,12 +6,20 @@ export default function Nav(props) {
   return (
     <div className="nav-bar">
       <Link to={"/home"}>
-        <button>Home</button>
+        <a className="home-button">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg"
+            alt="rick-and-morty"
+          />
+        </a>
       </Link>
       <SearchBar onSearch={props.onSearch} />
       <Link to={"/about"}>
-        <button>About</button>
+        <button className="about-button">About me</button>
       </Link>
+      <button className="logout-button" onClick={props.logout}>
+        Log out
+      </button>
     </div>
   );
 }
