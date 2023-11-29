@@ -11,8 +11,9 @@ import Form from "./components/form/Form.jsx";
 import Favorites from "./components/favorites/Favorites.jsx";
 import { useDispatch } from "react-redux";
 
-const URL = "https://rym2.up.railway.app/api/character";
-const API_KEY = "henrystaff";
+const URL = "http://localhost:3001/rickandmorty/character";
+// const URL "https://rym2.up.railway.app/api/character";
+// const API_KEY = "henrystaff";
 const EMAIL = "123@gmail.com";
 const PASSWORD = "asd1234";
 
@@ -55,7 +56,7 @@ function App() {
     if (characterId.length) {
       return alert(`El personaje con id ${id} ya existe`);
     }
-    axios(`${URL}/${id}?key=${API_KEY}`).then(({ data }) => {
+    axios(`${URL}/${id}`).then(({ data }) => {
       if (data.name) {
         setCharacters((oldChars) => [...oldChars, data]);
       } else {
@@ -65,7 +66,9 @@ function App() {
   }
 
   const onClose = (id) => {
-    setCharacters(characters.filter((char) => char.id !== Number(id)));
+    setCharacters((characters) =>
+      characters.filter((char) => char.id !== Number(id))
+    );
     dispatch(removeFav(id));
   };
 

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const URL = "https://rym2.up.railway.app/api/character";
+const URL = "http://localhost:3001/rickandmorty/character";
 const API_KEY = "henrystaff";
 
 function Detail(props) {
@@ -12,7 +12,7 @@ function Detail(props) {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
-    axios(`${URL}/${id}?key=${API_KEY}`).then(({ data }) => {
+    axios(`${URL}/${id}`).then(({ data }) => {
       if (data.name) {
         setCharacter(data);
       } else {
