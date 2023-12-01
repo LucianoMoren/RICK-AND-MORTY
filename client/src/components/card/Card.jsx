@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions";
 import style from "./card.module.css";
+import { IoCloseSharp } from "react-icons/io5";
 
 export default function Card(props) {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export default function Card(props) {
           className={style.buttonClose}
           onClick={() => props.onClose(props.id)}
         >
-          X
+          <IoCloseSharp className={style.closeIco} />
         </button>
       </div>
       <div className={style.div3}>

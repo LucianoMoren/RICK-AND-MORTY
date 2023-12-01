@@ -12,7 +12,6 @@ import Favorites from "./components/favorites/Favorites.jsx";
 import { useDispatch } from "react-redux";
 import Footer from "./components/footer/Footer.jsx";
 
-const URL = "http://localhost:3001/rickandmorty/character";
 // const URL "https://rym2.up.railway.app/api/character";
 // const API_KEY = "henrystaff";
 const EMAIL = "123@gmail.com";
@@ -57,13 +56,15 @@ function App() {
     if (characterId.length) {
       return alert(`El personaje con id ${id} ya existe`);
     }
-    axios(`${URL}/${id}`).then(({ data }) => {
-      if (data.name) {
-        setCharacters((oldChars) => [...oldChars, data]);
-      } else {
-        window.alert("¡No hay personajes con este ID!");
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
+      ({ data }) => {
+        if (data.name) {
+          setCharacters((oldChars) => [...oldChars, data]);
+        } else {
+          window.alert("¡No hay personajes con este ID!");
+        }
       }
-    });
+    );
   }
 
   const onClose = (id) => {
