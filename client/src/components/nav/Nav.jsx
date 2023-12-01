@@ -1,6 +1,7 @@
 import SearchBar from "../searchbar/SearchBar";
 import "./nav.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { MdLogout } from "react-icons/md";
 
 export default function Nav(props) {
   return (
@@ -16,12 +17,13 @@ export default function Nav(props) {
       <Link to={"/favorites"}>
         <button className="about-button">Favorites</button>
       </Link>
-      <SearchBar onSearch={props.onSearch} />
+      <SearchBar onSearch={props.onSearch} deleteAll={props.deleteAll} />
       <Link to={"/about"}>
         <button className="about-button">About me</button>
       </Link>
       <button className="logout-button" onClick={props.logout}>
         Log out
+        <MdLogout className="logout-ico" />
       </button>
     </div>
   );

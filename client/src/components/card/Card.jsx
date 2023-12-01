@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addFav, removeFav } from "../../redux/actions";
+import style from "./card.module.css";
 
 export default function Card(props) {
   const dispatch = useDispatch();
@@ -24,28 +25,38 @@ export default function Card(props) {
   }, [myFavorites]);
 
   return (
-    <div className="card">
-      {isFav ? (
-        <button onClick={handleFavorite}>❤️</button>
-      ) : (
-        <button onClick={handleFavorite}>🤍</button>
-      )}
-
-      {/* <button onClick={handleFavorite}>{isFav ? "❤" : "❌"}</button> */}
-
-      <button className="close-button" onClick={() => props.onClose(props.id)}>
-        X
-      </button>
-      <div className="card-image">
+    <div className={style.parent}>
+      <div className={style.div1}>
         <img src={props.image} alt={props.name} />
       </div>
-      <div className="card-description">
+
+      <div className={style.div2}>
+        {isFav ? (
+          <button onClick={handleFavorite}>💚</button>
+        ) : (
+          <button onClick={handleFavorite}>🤍</button>
+        )}
+
+        <button
+          className={style.buttonClose}
+          onClick={() => props.onClose(props.id)}
+        >
+          X
+        </button>
+      </div>
+      <div className={style.div3}>
+        <div className={style.backgroundImage}></div>
+
         <Link to={`/detail/${props.id}`}>
-          <p className="text-title">{props.name}</p>
+          <p className={style.name}>{props.name}</p>
         </Link>
-        <p className="text-body">{props.id}</p>
-        <p className="mb-2">Last location:</p>
-        <p className="font-bold text-blue-500">{props.origin}</p>
+        <p className={style.id}>
+          <p>ID</p>
+          {props.id}
+        </p>
+        <p className={style.lastLocation}>Last location</p>
+        <p className={style.origin}>{props.origin}</p>
+        <p className={style.status}>{props.status}</p>
       </div>
     </div>
   );

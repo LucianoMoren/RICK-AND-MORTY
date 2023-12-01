@@ -10,6 +10,7 @@ import NotFound from "./components/notfound/NotFound.jsx";
 import Form from "./components/form/Form.jsx";
 import Favorites from "./components/favorites/Favorites.jsx";
 import { useDispatch } from "react-redux";
+import Footer from "./components/footer/Footer.jsx";
 
 const URL = "http://localhost:3001/rickandmorty/character";
 // const URL "https://rym2.up.railway.app/api/character";
@@ -72,6 +73,10 @@ function App() {
     dispatch(removeFav(id));
   };
 
+  const deleteAll = () => {
+    setCharacters([]);
+  };
+
   const login = (userData) => {
     if (EMAIL === userData.email && PASSWORD === userData.password) {
       setAccess(true);
@@ -87,7 +92,9 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      {pathname !== "/" && <Nav onSearch={onSearch} logout={logout} />}
+      {pathname !== "/" && (
+        <Nav onSearch={onSearch} logout={logout} deleteAll={deleteAll} />
+      )}
 
       <Routes>
         <Route path="/" element={<Form login={login} />} />

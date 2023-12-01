@@ -1,0 +1,131 @@
+.parent {
+  font-family: "Signika", sans-serif;
+  display: grid;
+  grid-template-columns: 2fr 1.6fr;
+  grid-template-rows: 0.2fr 3.3fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 270px;
+  width: 350px;
+  border-radius: 10px;
+  background-color: rgb(39, 39, 39);
+  padding: 0px 0px 10px 10px;
+  position: relative;
+  z-index: 0;
+  color: white;
+  transition: 0.2s ease;
+}
+.parent:hover {
+  scale: 1.05;
+  transition: 0.2s ease;
+}
+
+.div1 {
+  grid-area: 2 / 1 / 2 / 2;
+  /* background-color: rgb(119, 240, 119); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+.div2 {
+  grid-area: 1 / 1 / 2 / 3;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: rgb(119, 157, 240); */
+}
+.div3 {
+  padding-right: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  grid-area: 2 / 2 / 3 / 3;
+  margin-left: 5px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  position: relative;
+  text-align: center;
+}
+.backgroundImage {
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/logo-removebg-preview.png");
+  background-position: center center;
+  background-size: 130px;
+  background-repeat: no-repeat;
+  position: absolute;
+  opacity: 0.5;
+  z-index: -1;
+}
+.div1 img {
+  height: 100%;
+  border-radius: 10px;
+}
+
+.div3 .name {
+  margin-bottom: 5px;
+  font-size: 19px;
+  font-weight: bolder;
+  background: rgb(13, 209, 212);
+  background: linear-gradient(
+    121deg,
+    rgba(13, 209, 212, 1) 0%,
+    rgba(118, 255, 105, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: 0.1s ease;
+}
+.id {
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+}
+.id p {
+  background: rgb(13, 209, 212);
+  background: linear-gradient(
+    121deg,
+    rgba(13, 209, 212, 1) 0%,
+    rgba(118, 255, 105, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-right: 8px;
+}
+
+.lastLocation {
+  font-size: 18px;
+  font-weight: 600;
+  background: rgb(13, 209, 212);
+  background: linear-gradient(
+    121deg,
+    rgba(13, 209, 212, 1) 0%,
+    rgba(118, 255, 105, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.origin {
+  font-size: 16px;
+  font-weight: 400;
+}
+.buttonClose {
+  background: rgba(32, 32, 32, 0.863);
+  width: 40px;
+  border-radius: 0 10px 0 10px;
+  transition: 0.1s ease;
+}
+
+.buttonClose:hover {
+  background: rgb(43, 43, 43);
+  transition: 0.1s ease;
+}
+.buttonClose:active {
+  background: rgb(255, 63, 63);
+}

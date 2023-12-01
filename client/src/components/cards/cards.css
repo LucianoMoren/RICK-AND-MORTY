@@ -1,8 +1,0 @@
-.display {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background: #d3dfe6;
-}
