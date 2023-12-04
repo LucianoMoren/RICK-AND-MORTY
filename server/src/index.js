@@ -1,16 +1,24 @@
-const getCharById = require("./controllers/getCharById");
-const http = require("http");
+//! I hate the back
+
+const express = require("express");
+const morgan = require("morgan");
+const router = require("./routes/index");
+const server = express();
 const PORT = 3001;
 
-http
-  .createServer((req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+server.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
+server.use(express.json());
+server.use("/rickandmorty", router);
 
-    if (req.url.includes("/rickandmorty/character")) {
-      const id = Number(req.url.split("/").pop());
-      getCharById(res, id);
-    }
-  })
-  .listen(PORT, "127.0.0.1", () => {
-    console.log(`Servidor en ejecución en el puerto ${PORT}`);
-  });
+server.listen(PORT, () => {
+  console.log(`Servidor en ejecución en el puerto ${PORT}`);
+});

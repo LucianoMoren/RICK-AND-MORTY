@@ -10,10 +10,7 @@ import NotFound from "./components/notfound/NotFound.jsx";
 import Form from "./components/form/Form.jsx";
 import Favorites from "./components/favorites/Favorites.jsx";
 import { useDispatch } from "react-redux";
-import Footer from "./components/footer/Footer.jsx";
 
-// const URL "https://rym2.up.railway.app/api/character";
-// const API_KEY = "henrystaff";
 const EMAIL = "123@gmail.com";
 const PASSWORD = "asd1234";
 
@@ -30,42 +27,25 @@ function App() {
     !access && navigate("/");
   }, [access]);
 
-  // const onSearch = async (id) => {
-  //   const characterId = characters.find((char) => char.id === Number(id));
-
-  //   if (characterId) {
-  //     alert(`${characterId.name} ya existe!`);
-  //     return;
-  //   }
-
-  //   try {
-  //     const { data } = await axios(`${URL}/${id}?key=${API_KEY}`);
-
-  //     if (data.name) {
-  //       setCharacters([...characters, data]);
-  //       navigate("/home");
-  //     } else {
-  //       window.alert("¡El id debe ser un número entre 1 y 826!");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching character:", error);
-  //   }
-  // };
-  function onSearch(id) {
+  const onSearch = async (id) => {
     const characterId = characters.filter((char) => char.id === Number(id));
     if (characterId.length) {
       return alert(`El personaje con id ${id} ya existe`);
     }
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          window.alert("¡No hay personajes con este ID!");
-        }
+    try {
+      const { data } = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+
+      if (data.name) {
+        setCharacters((oldChars) => [...oldChars, data]);
+      } else {
+        window.alert("¡No hay personajes con este ID!");
       }
-    );
-  }
+    } catch (error) {
+      return error.message;
+    }
+  };
 
   const onClose = (id) => {
     setCharacters((characters) =>
@@ -78,12 +58,23 @@ function App() {
     setCharacters([]);
   };
 
-  const login = (userData) => {
-    if (EMAIL === userData.email && PASSWORD === userData.password) {
-      setAccess(true);
-      navigate("/home");
-    } else {
-      alert("Tus datos no son correctos");
+  const login = async (userData) => {
+    try {
+      const { email, password } = userData;
+      const URL = "http://localhost:3001/rickandmorty/login/";
+
+      const { data } = await axios(
+        URL + `?email=${email}&password=${password}`
+      );
+      const { access } = data;
+      if (access === true) {
+        setAccess(data);
+        access && navigate("/home");
+      } else {
+        alert("Tus datos no son correctos");
+      }
+    } catch (error) {
+      return error.message;
     }
   };
 
