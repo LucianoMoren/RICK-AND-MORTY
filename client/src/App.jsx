@@ -10,6 +10,7 @@ import NotFound from "./components/notfound/NotFound.jsx";
 import Form from "./components/form/Form.jsx";
 import Favorites from "./components/favorites/Favorites.jsx";
 import { useDispatch } from "react-redux";
+import { removeFav } from "./redux/actions.js";
 
 const EMAIL = "123@gmail.com";
 const PASSWORD = "asd1234";
@@ -28,11 +29,12 @@ function App() {
   }, [access]);
 
   const onSearch = async (id) => {
-    const characterId = characters.filter((char) => char.id === Number(id));
-    if (characterId.length) {
-      return alert(`El personaje con id ${id} ya existe`);
-    }
     try {
+      const characterId = characters.filter((char) => char.id === Number(id));
+      if (characterId.length) {
+        return alert(`El personaje con id ${id} ya existe`);
+      }
+      navigate("/home");
       const { data } = await axios(
         `http://localhost:3001/rickandmorty/character/${id}`
       );
@@ -40,7 +42,7 @@ function App() {
       if (data.name) {
         setCharacters((oldChars) => [...oldChars, data]);
       } else {
-        window.alert("¡No hay personajes con este ID!");
+        alert("¡No hay personajes con este ID!");
       }
     } catch (error) {
       return error.message;
@@ -56,6 +58,7 @@ function App() {
 
   const deleteAll = () => {
     setCharacters([]);
+    navigate("/home");
   };
 
   const login = async (userData) => {

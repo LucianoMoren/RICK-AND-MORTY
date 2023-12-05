@@ -1,8 +1,9 @@
 import Card from "../card/Card.jsx";
 import style from "./cards.module.css";
+
 export default function Cards({ characters, onClose }) {
   return (
-    <div className="flex flex-wrap gap-4 justify-center pt-4">
+    <div className="flex flex-wrap gap-4 justify-center pt-4 mt-20">
       <div className={style.backgroundImage}></div>
       {!characters.length ? (
         <h2>Por favor ingrese un ID...</h2>

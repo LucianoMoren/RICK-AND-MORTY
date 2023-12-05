@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "MiFuente"; /* Puedes darle el nombre que prefieras */
+  src: url("../../assets/fonts/get_schwifty.ttf") format("truetype"); /* Ajusta la ruta y el formato según tu fuente */
+}
+
 .parent {
   font-family: "Signika", sans-serif;
   display: grid;
@@ -65,40 +70,24 @@
 }
 
 .div3 .name {
+  font-family: "MiFuente", sans-serif;
   margin-bottom: 5px;
   font-size: 19px;
   font-weight: bolder;
-  color: rgb(2, 109, 73);
-  /* background: rgb(13, 209, 212);
-  background: linear-gradient(
-    121deg,
-    rgba(13, 209, 212, 1) 0%,
-    rgba(118, 255, 105, 1) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  transition: 0.1s ease; */
+  color: #d0d0d0;
 }
+
 .id {
   display: flex;
   font-size: 16px;
   font-weight: 600;
+  align-items: center;
 }
-.id p {
-  color: rgb(2, 109, 73);
-}
-
-.lastLocation {
-  font-size: 18px;
-  font-weight: 600;
-  color: rgb(2, 109, 73);
+.icoId {
+  color: rgb(118, 209, 242);
+  margin-right: 10px;
 }
 
-.origin {
-  font-size: 16px;
-  font-weight: 400;
-}
 .buttonClose {
   display: flex;
   justify-content: center;
@@ -120,4 +109,97 @@
 .closeIco {
   font-size: 18px;
   font-weight: bolder;
+}
+
+@keyframes iluminacion {
+  0% {
+    opacity: 1; /* completamente visible */
+  }
+  50% {
+    opacity: 0; /* semi-transparente */
+  }
+  100% {
+    opacity: 1; /* completamente invisible */
+  } /* sombra de regreso a la normalidad */
+}
+
+.icoAlive {
+  color: rgb(47, 255, 64);
+  font-size: 18px;
+  margin: 5px;
+  animation: iluminacion 1.5s infinite; /* ajusta la duración según tus preferencias */
+}
+
+.statusAlive {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+@keyframes desaparicion {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.icoDead {
+  color: rgb(255, 34, 34);
+  height: 15px;
+  margin: 5px;
+  animation: desaparicion 2s ease-in-out infinite; /* ajusta la duración según tus preferencias */
+}
+
+.statusDead {
+  display: flex;
+  align-items: center;
+}
+
+/* .statusDead div {
+  background: rgb(255, 0, 0);
+  border-radius: 10px;
+  height: 10px;
+  width: 10px;
+  margin: 5px;
+}
+
+.statusDead {
+  display: flex;
+  align-items: center;
+} */
+
+.statusUnknown {
+  display: flex;
+  align-items: center;
+}
+@keyframes rotacionY {
+  0% {
+    transform: rotateY(0deg);
+  }
+  25% {
+    transform: rotateY(90deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  75% {
+    transform: rotateY(270deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.icoUnknown {
+  height: 17px;
+  width: 17px;
+  margin: 5px;
+  color: rgb(203, 203, 203);
+  transform-style: preserve-3d; /* Permite la rotación en 3D, aunque solo estemos usando Y */
+  animation: rotacionY 2s linear infinite; /* Ajusta la duración según tus preferencias */
 }

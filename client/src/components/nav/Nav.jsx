@@ -15,16 +15,18 @@ export default function Nav(props) {
         </a>
       </Link>
       <Link to={"/favorites"}>
-        <button className="about-button">Favorites</button>
+        <button className="nav-button">Favorites</button>
       </Link>
       <SearchBar onSearch={props.onSearch} deleteAll={props.deleteAll} />
-      <Link to={"/about"}>
-        <button className="about-button">About me</button>
-      </Link>
-      <button className="logout-button" onClick={props.logout}>
-        Log out
-        <MdLogout className="logout-ico" />
-      </button>
+      <div className="for-me">
+        <Link to={"/about"}>
+          <button className="nav-button">About me</button>
+        </Link>
+        <button className="logout-button" onClick={props.logout}>
+          Log out
+          <MdLogout className="logout-ico" />
+        </button>
+      </div>
     </div>
   );
 }

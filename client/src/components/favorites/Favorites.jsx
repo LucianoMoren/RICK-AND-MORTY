@@ -31,7 +31,7 @@ export default function Favorites({ onClose }) {
         </select>
       </div>
 
-      <div className="flex flex-wrap gap-4 justify-center">
+      <div className="flex flex-wrap gap-4 justify-center pt-4 mt-20">
         {!myFavorites.length ? (
           <h2>Agregue un personaje a sus favoritos!</h2>
         ) : (
