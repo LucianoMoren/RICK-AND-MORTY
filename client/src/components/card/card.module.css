@@ -20,24 +20,11 @@
   color: white;
   transition: 0.2s ease;
 }
-.parent:hover {
-  scale: 1.02;
-  transition: 0.2s ease;
-}
 
-.div1 {
-  grid-area: 2 / 1 / 2 / 2;
-  /* background-color: rgb(119, 240, 119); */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 5px;
-}
 .div2 {
   grid-area: 1 / 1 / 2 / 3;
   display: flex;
   justify-content: space-between;
-  /* background-color: rgb(119, 157, 240); */
 }
 .div3 {
   padding-right: 10px;
@@ -64,17 +51,38 @@
   opacity: 0.5;
   z-index: -1;
 }
+.div1 {
+  grid-area: 2 / 1 / 2 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
 .div1 img {
+  border-radius: 10px;
+  display: block;
+  width: 100%;
   height: 100%;
+  transition: transform 0.2s;
+}
+.parent:hover img {
+  transform: scale(1.1);
   border-radius: 10px;
 }
 
 .div3 .name {
   font-family: "MiFuente", sans-serif;
   margin-bottom: 5px;
-  font-size: 19px;
+  font-size: 21px;
   font-weight: bolder;
-  color: #d0d0d0;
+  color: #42b4ca;
+  font-weight: 400;
+  -webkit-text-stroke: 0.6px #bae52d;
+  letter-spacing: 2px;
 }
 
 .id {
@@ -92,14 +100,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(32, 32, 32, 0.863);
+  background: rgba(56, 56, 56, 0.863);
   width: 40px;
   border-radius: 0 10px 0 10px;
   transition: 0.1s ease;
 }
 
 .buttonClose:hover {
-  background: rgb(43, 43, 43);
+  background: rgb(32, 32, 32);
   transition: 0.1s ease;
 }
 .buttonClose:active {
@@ -202,4 +210,16 @@
   color: rgb(203, 203, 203);
   transform-style: preserve-3d; /* Permite la rotación en 3D, aunque solo estemos usando Y */
   animation: rotacionY 2s linear infinite; /* Ajusta la duración según tus preferencias */
+}
+
+.icoLikeD {
+  color: white;
+  font-size: 17px;
+  margin: 3px 0 3px 0;
+}
+
+.icoLike {
+  color: rgb(255, 15, 15);
+  font-size: 17px;
+  margin: 3px 0 3px 0;
 }

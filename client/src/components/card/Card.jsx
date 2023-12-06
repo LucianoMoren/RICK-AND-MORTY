@@ -9,6 +9,7 @@ import { TbActivityHeartbeat } from "react-icons/tb";
 import { GiHalfDead } from "react-icons/gi";
 import { MdOutlinePersonSearch } from "react-icons/md";
 import { FaAddressCard } from "react-icons/fa6";
+import { IoMdHeart } from "react-icons/io";
 
 export default function Card(props) {
   const dispatch = useDispatch();
@@ -64,9 +65,13 @@ export default function Card(props) {
 
       <div className={style.div2}>
         {isFav ? (
-          <button onClick={handleFavorite}>💚</button>
+          <button onClick={handleFavorite}>
+            <IoMdHeart className={style.icoLike} />
+          </button>
         ) : (
-          <button onClick={handleFavorite}>🤍</button>
+          <button onClick={handleFavorite}>
+            <IoMdHeart className={style.icoLikeD} />
+          </button>
         )}
 
         <button
@@ -86,8 +91,7 @@ export default function Card(props) {
           <FaAddressCard className={style.icoId} />
           {props.id}
         </div>
-        {/* <p className={style.lastLocation}>Last location</p>
-        <p className={style.origin}>{props.origin}</p> */}
+
         <p className={style.status}>{status()}</p>
       </div>
     </div>

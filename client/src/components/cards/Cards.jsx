@@ -1,12 +1,37 @@
+import { useEffect } from "react";
 import Card from "../card/Card.jsx";
 import style from "./cards.module.css";
 
 export default function Cards({ characters, onClose }) {
+  useEffect(() => {
+    // Cambiamos la clase 'active' cada 10 segundos
+    const interval = setInterval(() => {
+      const spans = document.querySelectorAll(`.${style.message} span`);
+      spans.forEach((span, index) => {
+        span.classList.toggle("active", index === 0); // Solo el primer span activa la animación
+      });
+    }, 10000);
+
+    // Limpiamos el intervalo cuando el componente se desmonta
+    return () => clearInterval(interval);
+  }, []); // El array vacío asegura que este efecto solo se ejecute una vez al montar el componente
+
   return (
     <div className="flex flex-wrap gap-4 justify-center pt-4 mt-20">
       <div className={style.backgroundImage}></div>
       {!characters.length ? (
-        <h2>Por favor ingrese un ID...</h2>
+        <h2 className={style.message}>
+          Please add a character to the list
+          <span className={style.dot} style={{ "--n": 1 }}>
+            .
+          </span>
+          <span className={style.dot} style={{ "--n": 2 }}>
+            .
+          </span>
+          <span className={style.dot} style={{ "--n": 3 }}>
+            .
+          </span>
+        </h2>
       ) : (
         characters.map((character) => (
           <Card

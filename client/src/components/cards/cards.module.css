@@ -1,3 +1,11 @@
+.message {
+  font-family: "Signika", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+}
+
 .backgroundImage {
   height: 100%;
   width: 100%;
@@ -8,4 +16,25 @@
   position: absolute;
   opacity: 0.5;
   z-index: -1;
+}
+
+span {
+  display: inline-block;
+  font-size: 18px;
+}
+
+@keyframes waves {
+  0%,
+  40%,
+  100% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-30px);
+  }
+}
+
+span {
+  animation: waves 2s infinite;
+  animation-delay: calc(0.2s * var(--n));
 }
