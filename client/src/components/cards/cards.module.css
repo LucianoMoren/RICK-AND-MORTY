@@ -30,11 +30,11 @@ span {
     transform: translateY(0px);
   }
   20% {
-    transform: translateY(-30px);
+    transform: translateY(-10px);
   }
 }
 
 span {
   animation: waves 2s infinite;
-  animation-delay: calc(0.2s * var(--n));
+  animation-delay: calc(0.1s * var(--n));
 }

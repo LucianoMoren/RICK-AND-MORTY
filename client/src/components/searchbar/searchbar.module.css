@@ -43,8 +43,12 @@
 
   margin-right: 10px;
 }
+.searchButton:hover {
+  background: #3d3a3a;
+}
 .searchButton:active {
-  background-color: #2a5a4d;
+  background: #a6d429;
+  color: #1b1b1b;
 }
 .plus {
   font-size: 14px;
@@ -67,8 +71,12 @@
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   overflow: hidden;
 }
+.randomButton:hover {
+  background: #3d3a3a;
+}
 .randomButton:active {
-  background-color: #1d4238;
+  background: #a6d429;
+  color: #1b1b1b;
 }
 .randomIco {
   font-size: 14px;
@@ -90,6 +98,9 @@
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   overflow: hidden;
   transition: 0.1s ease;
+}
+.deleteAll:hover {
+  background: #3d3a3a;
 }
 .deleteAll:active {
   background-color: rgb(255, 78, 78);

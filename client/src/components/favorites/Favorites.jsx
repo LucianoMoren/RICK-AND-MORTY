@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../card/Card.jsx";
 import { filterCards, orderCards } from "../../redux/actions.js";
+import style from "./favorite.module.css";
 
 export default function Favorites({ onClose }) {
   const myFavorites = useSelector((state) => state.myFavorites);
@@ -16,8 +17,8 @@ export default function Favorites({ onClose }) {
   };
 
   return (
-    <div>
-      <div>
+    <div className={style.parent}>
+      <div className={style.navBack}>
         <select name="order" onChange={handleOrder}>
           <option value="A">Ascendente</option>
           <option value="D">Descendente</option>
@@ -30,10 +31,15 @@ export default function Favorites({ onClose }) {
           <option value="unknown">unknown</option>
         </select>
       </div>
-
-      <div className="flex flex-wrap gap-4 justify-center pt-4 mt-20">
+      {/* flex flex-wrap gap-4 justify-center pt-4 mt-20 */}
+      <div className={style.cards}>
         {!myFavorites.length ? (
-          <h2>Agregue un personaje a sus favoritos!</h2>
+          <h2 className={style.message}>
+            Agregue un personaje a sus favoritos
+            <span className={style.dot} style={{ "--n": 1 }}>
+              !
+            </span>
+          </h2>
         ) : (
           myFavorites.map((favorite) => (
             <Card onClose={onClose} key={favorite.id} {...favorite} />

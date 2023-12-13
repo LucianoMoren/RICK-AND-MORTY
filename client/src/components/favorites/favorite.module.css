@@ -1,0 +1,88 @@
+.parent {
+  display: flex;
+  flex-direction: column;
+}
+.navBack {
+  position: absolute;
+  width: 220px;
+  height: 50px;
+  border-radius: 0 0 10px 0;
+  gap: 10px;
+  background: #272727;
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  align-items: center;
+}
+
+.navBack select {
+  font-family: "Signika", sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: rgb(20, 20, 20);
+  border-radius: 10px;
+  outline: none;
+  height: 40px;
+  padding: 3px;
+  text-align: center;
+}
+.navBack select:hover {
+  background-color: #1d1c1c;
+}
+
+.navBack select option {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding-top: 4.1rem;
+  margin-top: 5rem;
+}
+
+.message {
+  font-family: "Signika", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  position: absolute;
+  top: 98px;
+}
+
+span {
+  display: inline-block;
+  font-size: 18px;
+}
+
+@keyframes waves {
+  0%,
+  40%,
+  100% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-10px);
+  }
+}
+
+span {
+  animation: waves 2s infinite;
+  animation-delay: calc(0.1s * var(--n));
+}
+
+.backgroundImage {
+  height: 100%;
+  background-image: url("../../assets/favorite.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1000;
+}

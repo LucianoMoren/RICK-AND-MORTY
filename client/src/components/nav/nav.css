@@ -41,8 +41,16 @@
   font-size: 14px;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
+  transition: all 100ms;
   overflow: hidden;
+}
+.nav-button:hover {
+  /* background: #00b5cc; */
+  background: #3d3a3a;
+}
+.nav-button:active {
+  background: #a6d429;
+  color: #1b1b1b;
 }
 
 .logout-button {
@@ -61,11 +69,14 @@
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   overflow: hidden;
-  transition: 0.1s ease;
+  transition: all 100ms;
+}
+
+.logout-button:hover {
+  background: #3d3a3a;
 }
 .logout-button:active {
   background-color: rgb(255, 78, 78);
-  transition: 0.1s ease;
 }
 
 .logout-ico {

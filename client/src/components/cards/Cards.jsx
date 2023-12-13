@@ -15,9 +15,9 @@ export default function Cards({ characters, onClose }) {
     // Limpiamos el intervalo cuando el componente se desmonta
     return () => clearInterval(interval);
   }, []); // El array vacío asegura que este efecto solo se ejecute una vez al montar el componente
-
+  // pt-4
   return (
-    <div className="flex flex-wrap gap-4 justify-center pt-4 mt-20">
+    <div className="flex flex-wrap gap-4 justify-center mt-24">
       <div className={style.backgroundImage}></div>
       {!characters.length ? (
         <h2 className={style.message}>
