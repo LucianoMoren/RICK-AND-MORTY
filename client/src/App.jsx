@@ -23,9 +23,9 @@ function App() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    //!Acceso automatico
-    // !access && navigate("/home");
-    !access && navigate("/");
+    // !Acceso automatico
+    !access && navigate("/home");
+    // !access && navigate("/");
   }, [access]);
 
   const onSearch = async (id) => {

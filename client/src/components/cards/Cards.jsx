@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Card from "../card/Card.jsx";
 import style from "./cards.module.css";
+import Footer from "../footer/Footer.jsx";
 
 export default function Cards({ characters, onClose }) {
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function Cards({ characters, onClose }) {
           />
         ))
       )}
+      <Footer />
     </div>
   );
 }

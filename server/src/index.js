@@ -5,7 +5,8 @@ const { conn } = require("./DB_connection");
 
 //* Sincronizar la instancia de "Sequelize" al servidor
 conn
-  .sync({ force: true }) //* Retorna una promise
+  //! FORCE: ERA TRUE ACTUALMENTE ESTA FALSE
+  .sync({ force: false }) //* Retorna una promise
   .then(() =>
     server.listen(PORT, () => {
       console.log(`Servidor en ejecución en el puerto ${PORT}`);
